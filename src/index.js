@@ -21,11 +21,12 @@ app.get("/", (req, res) => {
 })
 
 //const PORT = process.env.PORT || 5000;
-const PORT = process.env.PORT || 8080;
+//const PORT = process.env.PORT || 8080;
+var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
-        app.listen(PORT, () => {
+        app.listen(server_port, () => {
             console.log("Server Started at port " + PORT);
         })
     })
