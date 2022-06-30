@@ -22,13 +22,20 @@ app.get("/", (req, res) => {
 
 //const PORT = process.env.PORT || 5000;
 //const PORT = process.env.PORT || 8080;
+//var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+
 var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
-        app.listen(server_port, () => {
-            console.log("Server Started at port " + PORT);
-        })
+        // app.listen(server_port, () => {
+        //     console.log("Server Started at port " + PORT);
+        // })
+        app.listen(server_port, server_host, function () {
+            console.log('Listening on port %d', server_port);
+        });
     })
     .catch((error) => {
         console.log(error)
